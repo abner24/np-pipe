@@ -1,5 +1,7 @@
+fast5dir: ${params.fast5}
+
 Channel
-    .fromPath("ecoli_2kb_region/fast5_files/*", type: 'dir')
+    .fromPath(fast5dir, type: 'dir')
     .map {fast5 ->
         def key = fast5.toString().tokenize('/')[-1]
         return tuple(key,fast5)
