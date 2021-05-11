@@ -1,4 +1,4 @@
-fast5dir: ${params.fast5}
+fast5dir = params.fast5
 
 Channel
     .fromPath(fast5dir, type: 'dir')
