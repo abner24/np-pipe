@@ -11,6 +11,8 @@ Channel
 outputFastq = 'results/'
 
 process baseCalling {
+    cpus 8
+    
     input:
     set key, file(fast5) from for_basecalling 
     
