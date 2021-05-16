@@ -18,7 +18,7 @@ process baseCalling {
     output:
     set file("${key}.*.gz") optional true 
 
-	publishDir "${params.outdir}/${key}", pattern: "*.fastq.gz",  mode: 'copy'
+	publishDir "${params.outdir}/results/${key}", pattern: "*.fastq.gz",  mode: 'copy'
 
     script:
    	def multi_cmd = ""
