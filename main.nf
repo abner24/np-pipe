@@ -42,7 +42,7 @@ process baseCalling {
 	        pigz -p8 ${key}.PASS.fastq
         fi
 
-        if [-d ${key}_out/fail/ ]; then
+        if [ -d ${key}_out/fail/ ]; then
             cat ${key}_out/fail/*.fastq >> ${key}.FAIL.fastq
             pigz -p8 ${key}.FAIL.fastq
         fi
