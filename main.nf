@@ -8,7 +8,6 @@ Channel
     }
    .set { for_basecalling }
 
-outputFastq = 'results/'
 
 process baseCalling {
     cpus 8
@@ -19,7 +18,7 @@ process baseCalling {
     output:
     set file("${key}.*.gz") optional true 
 
-	publishDir outputFastq, pattern: "*.fastq.gz",  mode: 'copy'
+	publishDir "${params.outdir}/${key}", pattern: "*.fastq.gz",  mode: 'copy'
 
     script:
    	def multi_cmd = ""
@@ -38,9 +37,15 @@ process baseCalling {
             --chunks_per_runner 512
 
         if [ -d ${key}_out/pass/ ]; then
-	        cat ${key}_out/pass/*.fastq >> ${key}.fastq
-	        gzip ${key}.fastq
+	        cat ${key}_out/pass/*.fastq >> ${key}.PASS.fastq
+	        gzip ${key}.PASS.fastq
         fi
+
+        if [-d ${key}_out/fail/ ]; then
+            cat ${key}_out/fail/*.fastq >> ${key}.FAIL.fastq
+            gzip ${key}.FAIL.fastq
+        fi
+
 	    ${multi_cmd}
 	"""
 }
