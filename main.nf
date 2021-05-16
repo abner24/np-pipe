@@ -47,6 +47,8 @@ process baseCalling {
             gzip ${key}.FAIL.fastq
         fi
 
+        cp ${key}_out/sequencing_summary.txt .
+
 	    ${multi_cmd}
 	"""
 }
