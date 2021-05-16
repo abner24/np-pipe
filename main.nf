@@ -34,7 +34,7 @@ process baseCalling {
 	    guppy_basecaller ${gpu_cmd} --flowcell ${params.flowcell} --kit ${params.kit} \
             -i ${fast5} --save_path ./${key}_out --cpu_threads_per_caller 1  \
             --num_callers  ${task.cpus} --recursive --gpu_runners_per_device 4 \
-            --chunks_per_runner 512
+            --chunks_per_runner 768 
 
         if [ -d ${key}_out/pass/ ]; then
 	        cat ${key}_out/pass/*.fastq >> ${key}.PASS.fastq
