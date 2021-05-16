@@ -39,12 +39,12 @@ process baseCalling {
 
         if [ -d ${key}_out/pass/ ]; then
 	        cat ${key}_out/pass/*.fastq >> ${key}.PASS.fastq
-	        gzip ${key}.PASS.fastq
+	        pigz ${key}.PASS.fastq
         fi
 
         if [-d ${key}_out/fail/ ]; then
             cat ${key}_out/fail/*.fastq >> ${key}.FAIL.fastq
-            gzip ${key}.FAIL.fastq
+            pigz ${key}.FAIL.fastq
         fi
 
         cp ${key}_out/sequencing_summary.txt .
