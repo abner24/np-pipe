@@ -15,7 +15,7 @@ process baseCalling {
     set key, file(fast5) from for_basecalling 
     
     output:
-    file("${key}.*.gz") optional true 
+    file("${key}.*.fastq") optional true
 
 	publishDir "${params.outdir}/${key}", pattern: "*.fastq",  mode: 'copy'
 	publishDir "${params.outdir}/${key}", pattern: "sequencing_summary.txt",  mode: 'copy'
